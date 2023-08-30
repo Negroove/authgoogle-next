@@ -3,21 +3,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import React from "react";
 
 const Login = () => {
-  const session = useSession();
-  console.log(session);
-  if (session.status === "loading") {
-    return <p>Loading....</p>;
-  }
-  if (session.status === "authenticated") {
-    return <button onClick={() => signOut("google")}>Logout</button>;
-  }
-  if (session.status === "unauthenticated") {
-    return (
-      <div>
-        <button onClick={() => signIn("google")}>Login with google</button>
-      </div>
-    );
-  }
+  const {status} = useSession
   return (
     <div>
       <button onClick={() => signIn("google")}>Login with google</button>
